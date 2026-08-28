@@ -15,6 +15,7 @@ def generate_ai_lesson():
             "ដែលមានប្រវែងចន្លោះពី ១៥០ ទៅ ២៥០ ពាក្យ។ រៀបចំទម្រង់ឱ្យមានចំណុចៗច្បាស់លាស់ "
             "និងប្រើប្រាស់ Emoji ឱ្យមើលទៅទាក់ទាញ សម្រាប់ផ្ញើចូល Telegram Channel/Group។"
         )
+        # ប្តូរឈ្មោះ Model មកប្រើ gemini-2.5-flash
         response = client.models.generate_content(
             model="gemini-2.5-flash",
             contents=prompt,
