@@ -1,0 +1,27 @@
+name: Daily AI Lesson Bot
+
+on:
+  schedule:
+    - cron: '0 0 * * *' # រត់រៀងរាល់ថ្ងៃ ម៉ោង ៧:០០ ព្រឹក (ម៉ោងនៅកម្ពុជា)
+  workflow_dispatch: # អនុញ្ញាតឱ្យចុច Run Manual ដោយដៃបាន
+
+jobs:
+  run-bot:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: pip install google-genai requests
+
+      - name: Run Script
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+        run: python main.py
